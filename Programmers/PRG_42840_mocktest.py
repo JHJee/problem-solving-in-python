@@ -1,23 +1,20 @@
 def solution(answers):
-    answer = [_ for _ in range(3)]
+    answer = [0 for _ in range(3)]
     first = [1, 2, 3, 4, 5]
     second = [2, 1, 2, 3, 2, 4, 2, 5]
     third = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
 
-    for i in answers:
-        if first[i % len(first)] == i:
+    for i in range(len(answers)):
+        if first[i % len(first)] == answers[i]:
             answer[0] += 1
-        if second[i % len(second)] == i:
+        if second[i % len(second)] == answers[i]:
             answer[1] += 1
-        if third[i % len(third)] == i:
+        if third[i % len(third)] == answers[i]:
             answer[2] += 1
 
     highest = max(answer[0], answer[1], answer[2])
+    result = []
     for i in range(3):
         if answer[i] == highest:
-            answer.append(i + 1)
-    return answer
-
-
-if __name__ == "__main__":
-    print(solution([1, 3, 2, 4, 2]))
+            result.append(i + 1)
+    return result
